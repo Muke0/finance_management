@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@Api(value="支出收入管理")
+@Api(value="工资表相关")
 @RestController
-@RequestMapping("/business")
-public class FmBusinessController implements BaseController<FmBusinessEntity>{
+@RequestMapping("/task")
+public class TaskController implements BaseController<FmBusinessEntity>{
     @Autowired
     private FmBusinessService fmBusinessService;
 
