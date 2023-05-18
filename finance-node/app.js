@@ -41,6 +41,9 @@ app.use('/task', taskRouter)
 
 const payRouter = require('./router/pay')
 app.use('/pay', payRouter)
+
+const staffRouter = require('./router/staff')
+app.use('/staff', staffRouter)
     // 定义错误级别的中间件
 app.use((err, req, res, next) => {
     // 验证失败导致的错误
