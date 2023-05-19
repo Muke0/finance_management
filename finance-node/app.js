@@ -4,8 +4,10 @@ const express = require('express')
 const app = express()
 const joi = require('@hapi/joi')
 const moment = require('moment')
-    // const server={port:'86',ip:'10.0.4.8'};
-    // 导入并配置 cors 中间件
+const os = require('os');
+const serverlink = { port: '9998', ip: '10.0.4.8' };
+const locallink = { port: '9998', ip: '127.0.0.1' };
+// 导入并配置 cors 中间件
 const cors = require('cors')
 app.use(cors())
 app.use(express.json());
@@ -55,6 +57,12 @@ app.use((err, req, res, next) => {
 })
 
 // 启动服务器
-var Server = app.listen('9998', 'localhost', () => {
-    console.log('api server running at http://127.0.0.1:9998')
-})
+if (os.networkInterfaces().eth0 == null) {
+    var Server = app.listen(locallink.port, locallink.ip, () => {
+        console.log('api server running at http://' + locallink.ip + ':' + locallink.port);
+    })
+} else {
+    var Server = app.listen(serverlink.port, serverlink.ip, () => {
+        console.log('api server running at http://' + serverlink.ip + ':' + serverlink.port);
+    })
+}
