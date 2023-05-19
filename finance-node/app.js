@@ -57,7 +57,7 @@ app.use((err, req, res, next) => {
 })
 
 // 启动服务器
-if (os.networkInterfaces().eth0 == null) {
+if (os.networkInterfaces().eth0 == null) { //如果为服务器端
     var Server = app.listen(locallink.port, locallink.ip, () => {
         console.log('api server running at http://' + locallink.ip + ':' + locallink.port);
     })
