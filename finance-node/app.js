@@ -57,11 +57,11 @@ app.use((err, req, res, next) => {
 })
 
 // 启动服务器
-if (os.networkInterfaces().eth0 == null) { //如果为服务器端
+if (os.networkInterfaces().eth0 == null) { //验证是否是否存在linux网卡
     var Server = app.listen(locallink.port, locallink.ip, () => {
         console.log('api server running at http://' + locallink.ip + ':' + locallink.port);
     })
-} else {
+} else { //如果在服务器端
     var Server = app.listen(serverlink.port, serverlink.ip, () => {
         console.log('api server running at http://' + serverlink.ip + ':' + serverlink.port);
     })
