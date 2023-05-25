@@ -1,10 +1,10 @@
 # 系统介绍
 
-该系统是一个小巧精致的公司财务系统，所用皆为最新流行技术，非常适合个人研究学习或者二次开发。
+该系统是一个软件工程大作业。
 
 # 技术说明
 
-后台 SpringBoot2.x，JWT 鉴权，Druid连接池，数据库 Mysql
+后台 nodejs,数据库 Mysql，连接池
 
 前台 vue-cli 3.0，vue-element-ui
 
