@@ -6,6 +6,9 @@ const routes = [
   { path: "/", component: index },
   { path: "/login", component: () => import("../views/login.vue") },
   { path: "/register", component: () => import("../views/register.vue") },
+  { path: "/upload", component: () => import("../views/upload.vue") },
+  { path: "/review", component: () => import("../views/review.vue") },
+  { path: "/generate", component: () => import("../views/generate.vue") },
 ];
 
 const router = createRouter({
