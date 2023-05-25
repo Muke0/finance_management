@@ -10,4 +10,6 @@ router.post('/upload', task_handler.upload)
 router.post('/check', task_handler.check)
     //获取课时表
 router.get('/', task_handler.get_tasks)
+    //删除课时表
+router.delete('/', task_handler.delete_tasks)
 module.exports = router
