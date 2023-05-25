@@ -10,9 +10,9 @@
         </el-icon>
         <span class="menu">工资管理</span>
       </template>
-      <el-menu-item index="1-1" class="menu-item">数据上报</el-menu-item>
-      <el-menu-item index="1-2" class="menu-item">数据审核</el-menu-item>
-      <el-menu-item index="1-3" class="menu-item">报表生成</el-menu-item>
+      <el-menu-item index="1-1" class="menu-item" @click="toTarget('/upload')">数据上报</el-menu-item>
+      <el-menu-item index="1-2" class="menu-item" @click="toTarget('/review')">数据审核</el-menu-item>
+      <el-menu-item index="1-3" class="menu-item" @click="toTarget('/generate')">报表查询</el-menu-item>
     </el-sub-menu>
   </el-menu>
   <div class="container">
@@ -33,6 +33,11 @@ export default {
     };
   },
   created() { },
+  methods: {
+    toTarget(target) {
+      this.$router.push(target);
+    }
+  },
   mounted() { 
     if (localStorage.getItem('token')) {
       // 获取用户信息

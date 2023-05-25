@@ -45,9 +45,9 @@ export default {
 
     mounted() {
         // 判断是否已经登入
-        if (localStorage.getItem('token')) {
-            this.$router.push('/')
-        }
+        // if (localStorage.getItem('token')) {
+        //     this.$router.push('/')
+        // }
     },
 
     methods: {
