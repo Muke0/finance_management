@@ -30,6 +30,16 @@ exports.check = (req, res) => {
         if (err) {
             return res.cc(err)
         }
+        if (table.checked == 2) {
+            const sql_deleteWageTable = 'delete from wagetable where sId=? and year=? and month=?'
+            db.query(sql_deleteWageTable, [table.sId, table.year, table.month], (err, results) => {
+                // 执行 SQL 语句失败
+                if (err) {
+                    return res.cc(err)
+                }
+                console.log('工资删除成功')
+            })
+        }
         if (table.checked == 1) {
             const sql_searchTimes = 'select hours from workhours where sId=? and year=? and month=?'
             db.query(sql_searchTimes, [table.sId, table.year, table.month], (err, results) => {
@@ -115,7 +125,12 @@ exports.check = (req, res) => {
                 })
             })
         }
-        res.cc('审核成功！', 0)
+        if (table.checked == 1) {
+            res.cc('审核成功！该审核通过', 0)
+        }
+        if (table.checked == 2) {
+            res.cc('审核成功！该审核驳回', 0)
+        }
     })
 }
 exports.get_tasks = (req, res) => {
