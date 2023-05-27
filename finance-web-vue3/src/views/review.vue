@@ -93,7 +93,7 @@ export default {
                 color: ['#5470c6', '#fac858'],
                 series: [
                     {
-                        name: 'Access From',
+                        name: '类型',
                         type: 'pie',
                         radius: '50%',
                         data: [
@@ -126,7 +126,7 @@ export default {
                 color: ['#91cc75', '#ee6666', '#fac858'],
                 series: [
                     {
-                        name: 'Access From',
+                        name: '类型',
                         type: 'pie',
                         radius: '50%',
                         data: [
