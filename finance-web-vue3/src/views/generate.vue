@@ -1,5 +1,7 @@
 <template>
     <headbar></headbar>
+    <div class="card">
+        <div class="title">工资查询</div>
     <el-form :inline="true" :model="form">
         <el-form-item label="职工ID">
             <el-input v-model="form.user" placeholder="ID" />
@@ -53,6 +55,7 @@
             <el-statistic title="实发工资" :value=data.netPayroll />
         </el-col>
     </el-row>
+</div>
 </template>
 
 <script>

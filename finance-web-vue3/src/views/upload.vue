@@ -1,6 +1,8 @@
 <template>
     <headbar></headbar>
-    <el-form :label-position="'left'" label-width="100px" style="max-width: 460px" class="forms">
+    <div class="card">
+        <div class="title">数据上传</div>
+        <el-form :label-position="'left'" label-width="100px" style="max-width: 460px" class="forms">
         <el-form-item label="教职工ID">
             <el-input v-model="form.id" />
         </el-form-item>
@@ -16,6 +18,8 @@
             </el-button>
         </el-form-item>
     </el-form>
+    </div>
+    
 </template>
 
 <script>
@@ -36,7 +40,7 @@ export default {
             var data = {
                 'sId': this.form.id,
                 'year': String(new Date(this.form.time).getFullYear()),
-                'month': String(new Date(this.form.time).getMonth()),
+                'month': String(new Date(this.form.time).getMonth()+1),
                 'times': this.form.lesson
             };
             var config = {
