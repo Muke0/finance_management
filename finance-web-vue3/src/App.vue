@@ -14,6 +14,7 @@
       <el-menu-item index="1-2" class="menu-item" @click="toTarget('/review')">数据审核</el-menu-item>
       <el-menu-item index="1-3" class="menu-item" @click="toTarget('/generate')">工资查询</el-menu-item>
       <el-menu-item index="1-4" class="menu-item" @click="toTarget('/output')">报表导出</el-menu-item>
+      <el-menu-item index="1-5" class="menu-item" @click="toTarget('/staff')">人员管理</el-menu-item>
     </el-sub-menu>
   </el-menu>
   <div class="container">

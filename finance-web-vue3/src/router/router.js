@@ -10,6 +10,7 @@ const routes = [
   { path: "/review", component: () => import("../views/review.vue") },
   { path: "/output", component: () => import("../views/output.vue") },
   { path: "/generate", component: () => import("../views/generate.vue") },
+  { path: "/staff", component: () => import("../views/staff.vue") },
 ];
 
 const router = createRouter({
