@@ -70,7 +70,7 @@
             </el-form>
             <template #footer>
               <span class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">取消</el-button>
+                <el-button @click="modifyDialogFormVisible = false">取消</el-button>
                 <el-button type="primary" @click="onmodify"> 确认 </el-button>
               </span>
             </template>
