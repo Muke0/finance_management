@@ -8,6 +8,7 @@ const routes = [
   { path: "/register", component: () => import("../views/register.vue") },
   { path: "/upload", component: () => import("../views/upload.vue") },
   { path: "/review", component: () => import("../views/review.vue") },
+  { path: "/output", component: () => import("../views/output.vue") },
   { path: "/generate", component: () => import("../views/generate.vue") },
 ];
 

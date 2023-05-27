@@ -27,16 +27,16 @@
     </el-row>
     <el-row>
         <el-col :span="6">
-            <el-statistic title="cleaningFee" :value=data.cleaningFee />
+            <el-statistic title="洗理费" :value=data.cleaningFee />
         </el-col>
         <el-col :span="6">
-            <el-statistic title="classfee" :value=data.classfee />
+            <el-statistic title="课时费" :value=data.classfee />
         </el-col>
         <el-col :span="6">
-            <el-statistic title="jobsubsidy" :value=data.jobsubsidy />
+            <el-statistic title="岗位津贴" :value=data.jobsubsidy />
         </el-col>
         <el-col :span="6">
-            <el-statistic title="totalWage" :value=data.totalWage />
+            <el-statistic title="工资总额" :value=data.totalWage />
         </el-col>
     </el-row>
     <el-row>
@@ -44,13 +44,13 @@
             <el-statistic title="个人所得税" :value=data.individualIncomeTax />
         </el-col>
         <el-col :span="6">
-            <el-statistic title="housingProvidentFund" :value=data.housingProvidentFund />
+            <el-statistic title="住房公积金" :value=data.housingProvidentFund />
         </el-col>
         <el-col :span="6">
-            <el-statistic title="premium" :value=data.premium />
+            <el-statistic title="保险费" :value=data.premium />
         </el-col>
         <el-col :span="6">
-            <el-statistic title="总工资" :value=data.netPayroll />
+            <el-statistic title="实发工资" :value=data.netPayroll />
         </el-col>
     </el-row>
 </template>
@@ -69,18 +69,18 @@ export default {
                 "sId": 100001,
                 "year": 2023,
                 "month": 1,
-                "basePay": 3000,
-                "livingAllowance": null,
-                "bookFee": null,
-                "carFare": null,
-                "cleaningFee": null,
-                "classfee": null,
-                "jobsubsidy": null,
-                "totalWage": null,
-                "individualIncomeTax": null,
-                "housingProvidentFund": null,
-                "premium": null,
-                "netPayroll": 3700
+                "basePay": 'N/A',
+                "livingAllowance": 'N/A',
+                "bookFee": 'N/A',
+                "carFare": 'N/A',
+                "cleaningFee": 'N/A',
+                "classfee": 'N/A',
+                "jobsubsidy": 'N/A',
+                "totalWage": 'N/A',
+                "individualIncomeTax": 'N/A',
+                "housingProvidentFund": 'N/A',
+                "premium": 'N/A',
+                "netPayroll": 'N/A'
             }
         }
     },
