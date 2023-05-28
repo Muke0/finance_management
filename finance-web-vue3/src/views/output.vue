@@ -43,7 +43,7 @@ export default {
         return {
             tableData: [],
             form: {
-                date: '',
+                date: new Date(),
                 type: [],
             },
             selected: [],
