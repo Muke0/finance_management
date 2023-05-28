@@ -147,7 +147,15 @@ export default {
             const _this = this
             axios(config).then(function (response) {
                 console.log(response.data)
+                if (response.data.length == 0 || response.data[0].basePay == null) {
+                    ElMessage({
+                        message: '该员工该月份无工资信息',
+                        type: 'warning'
+                    });
+                    return
+                }
                 _this.data = response.data[0]
+                
             }).catch(function (error) {
                 console.log(error);
             })
