@@ -80,9 +80,13 @@ exports.login = (req, res) => {
         })
     })
 }
+
+//获取用户信息的处理函数
 exports.get_info = (req, res) => {
     res.send(req.user)
 }
+
+//修改用户信息的处理函数
 exports.put_info = (req, res) => {
     let sql = 'update user set ? where user_id=?';
     let user_password = bcrypt.hashSync(req.body.user_password, 10)
@@ -105,8 +109,4 @@ exports.put_info = (req, res) => {
         }
         res.status(200).json({ msg: "用户信息更新成功" })
     })
-}
-exports.test = (req, res) => {
-    console.log(req)
-    res.send()
 }
