@@ -10,12 +10,12 @@
 
 # 部署运行说明
 
-创建 finance_manager 数据库，编码 utf8mb4
+在mysql数据库中运行software_engineering.sql，创建数据库
 
-修改 application.yml 的数据库连接配置为自己的
+修改 finance-node/db/index.js 的数据库连接配置为自己的
 
-启动 FinanceApplication 即可
+在finance-node目录运行 node app.js启动后端服务
 
-前台 npm install 安装依赖，npm run dev 运行即可
+前台在finance-web-vue3目录运行 npm install 安装依赖，npm run dev 运行即可
 
-用户名/密码 admin/123456
+用户名/密码 zkd / 11111111

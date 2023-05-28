@@ -5,8 +5,8 @@ const app = express()
 const joi = require('@hapi/joi')
 const moment = require('moment')
 const os = require('os');
-const serverlink = { port: '9998', ip: '10.0.4.8' };
-const locallink = { port: '9998', ip: '127.0.0.1' };
+const serverlink = { port: '9998', ip: '10.0.4.8' }; //服务器连接配置
+const locallink = { port: '9998', ip: '127.0.0.1' }; //本地连接配置
 // 导入并配置 cors 中间件
 const cors = require('cors')
 app.use(cors())

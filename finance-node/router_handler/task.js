@@ -38,6 +38,7 @@ exports.check = (req, res) => {
                     return res.cc(err)
                 }
                 console.log('工资删除成功')
+                console.log(results)
             })
         }
         if (table.checked == 1) {
@@ -133,6 +134,8 @@ exports.check = (req, res) => {
         }
     })
 }
+
+//获取课时工时表的处理函数
 exports.get_tasks = (req, res) => {
     page = req.query.page || 0;
     size = req.query.size || 30;
@@ -152,6 +155,8 @@ exports.get_tasks = (req, res) => {
         }
     })
 }
+
+//删除课时工时表的处理函数
 exports.delete_tasks = (req, res) => {
     sId = req.body.sId;
     year = req.body.year;

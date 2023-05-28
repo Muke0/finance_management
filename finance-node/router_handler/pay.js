@@ -17,6 +17,8 @@ exports.get_paysheet = (req, res) => {
         res.send(results)
     })
 }
+
+//获取工资明细表的处理函数
 exports.get_paysheet_detail = (req, res) => {
     // 获取客户端提交到服务器的用户信息
     const table = req.query

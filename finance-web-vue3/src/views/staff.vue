@@ -28,9 +28,11 @@
   <div class="card">
     <div class="title">
       人员列表
-      <el-button text @click="dialogFormVisible = true"> add </el-button>
+      <el-button @click="dialogFormVisible = true" type="primary">
+        add
+      </el-button>
     </div>
-
+    <!-- 添加员工 -->
     <el-dialog v-model="dialogFormVisible" title="添加员工">
       <el-form :model="addform">
         <el-form-item label="教职工ID" :label-width="formLabelWidth">
@@ -39,11 +41,37 @@
         <el-form-item label="姓名" :label-width="formLabelWidth">
           <el-input v-model="addform.sName" autocomplete="off" />
         </el-form-item>
-        <el-form-item label="职称" :label-width="formLabelWidth">
-          <el-input v-model="addform.sPosition" autocomplete="off" />
-        </el-form-item>
         <el-form-item label="类别" :label-width="formLabelWidth">
-          <el-input v-model="addform.sType" autocomplete="off" />
+          <!-- <el-input v-model="modifyform.sType" autocomplete="off" /> -->
+          <el-select v-model="addform.sType" :placeholder="typeholder(0)">
+            <el-option
+              v-for="item in typeOptions"
+              :key="item.value"
+              :lable="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="职称" :label-width="formLabelWidth">
+          <el-select
+            v-model="addform.sPosition"
+            :placeholder="positionholder(0)"
+          >
+            <el-option
+              v-if="addform.sType == '教师'"
+              v-for="item in positionOptions1"
+              :key="item.value"
+              :lable="item.label"
+              :value="item.value"
+            ></el-option>
+            <el-option
+              v-if="addform.sType == '职工'"
+              v-for="item in positionOptions2"
+              :key="item.value"
+              :lable="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -54,27 +82,54 @@
       </template>
     </el-dialog>
     <el-dialog v-model="modifyDialogFormVisible" title="修改员工信息">
-            <el-form :model="modifyform">
-              <el-form-item label="教职工ID" :label-width="formLabelWidth">
-                <el-input v-model="modifyform.sId" autocomplete="off" />
-              </el-form-item>
-              <el-form-item label="姓名" :label-width="formLabelWidth">
-                <el-input v-model="modifyform.sName" autocomplete="off" />
-              </el-form-item>
-              <el-form-item label="职称" :label-width="formLabelWidth">
-                <el-input v-model="modifyform.sPosition" autocomplete="off" />
-              </el-form-item>
-              <el-form-item label="类别" :label-width="formLabelWidth">
-                <el-input v-model="modifyform.sType" autocomplete="off" />
-              </el-form-item>
-            </el-form>
-            <template #footer>
-              <span class="dialog-footer">
-                <el-button @click="modifyDialogFormVisible = false">取消</el-button>
-                <el-button type="primary" @click="onmodify"> 确认 </el-button>
-              </span>
-            </template>
-          </el-dialog>
+      <el-form :model="modifyform">
+        <el-form-item label="教职工ID" :label-width="formLabelWidth">
+          <el-input v-model="modifyform.sId" autocomplete="off" />
+        </el-form-item>
+        <el-form-item label="姓名" :label-width="formLabelWidth">
+          <el-input v-model="modifyform.sName" autocomplete="off" />
+        </el-form-item>
+        <el-form-item label="类别" :label-width="formLabelWidth">
+          <!-- <el-input v-model="modifyform.sPosition" autocomplete="off" /> -->
+          <el-select v-model="modifyform.sType" :placeholder="typeholder(1)">
+            <el-option
+              v-for="item in typeOptions"
+              :key="item.value"
+              :lable="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="职称" :label-width="formLabelWidth">
+          <!-- <el-input v-model="modifyform.sType" autocomplete="off" /> -->
+          <el-select
+            v-model="modifyform.sPosition"
+            :placeholder="positionholder(1)"
+          >
+            <el-option
+              v-if="modifyform.sType == '教师'"
+              v-for="item in positionOptions1"
+              :key="item.value"
+              :lable="item.label"
+              :value="item.value"
+            ></el-option>
+            <el-option
+              v-if="modifyform.sType == '职工'"
+              v-for="item in positionOptions2"
+              :key="item.value"
+              :lable="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="modifyDialogFormVisible = false">取消</el-button>
+          <el-button type="primary" @click="onmodify"> 确认 </el-button>
+        </span>
+      </template>
+    </el-dialog>
     <el-table :data="tableData" stripe style="width: 100%">
       <el-table-column prop="sId" label="教职工ID" width="180" />
       <el-table-column prop="sName" label="姓名" width="180" />
@@ -138,7 +193,48 @@ export default {
         sPosition: "N/A",
         sType: "N/A",
       },
-      //
+      typeOptions: [
+        {
+          value: "教师",
+          label: "教师",
+        },
+        {
+          value: "职工",
+          label: "职工",
+        },
+      ],
+      positionOptions1: [
+        {
+          value: "助教",
+          label: "助教",
+        },
+        {
+          value: "讲师",
+          label: "讲师",
+        },
+        {
+          value: "教授",
+          label: "教授",
+        },
+        {
+          value: "副教授",
+          label: "副教授",
+        },
+      ],
+      positionOptions2: [
+        {
+          value: "保卫科工作人员",
+          label: "保卫科工作人员",
+        },
+        {
+          value: "食堂工作人员",
+          label: "食堂工作人员",
+        },
+        {
+          value: "寝室楼工作人员",
+          label: "寝室楼工作人员",
+        },
+      ],
       tableData: [],
       dialogFormVisible: false,
       modifyDialogFormVisible: false,
@@ -327,6 +423,12 @@ export default {
       this.modifyform.sPosition = row.sPosition;
       this.modifyform.sType = row.sType;
       this.modifyDialogFormVisible = true;
+    },
+    positionholder(type) {
+      return type == 1 ? this.modifyform.sPosition : this.addform.sPosition;
+    },
+    typeholder(type) {
+      return type == 1 ? this.modifyform.sType : this.addform.sType;
     },
   },
 };

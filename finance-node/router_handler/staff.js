@@ -17,6 +17,8 @@ exports.upload = (req, res) => {
         res.cc('教职工添加成功！', 0)
     })
 }
+
+//获取教职工信息的处理函数
 exports.get_staff = (req, res) => {
     page = req.query.page || 0;
     size = req.query.size || 30;
@@ -36,6 +38,8 @@ exports.get_staff = (req, res) => {
         }
     })
 }
+
+//删除教职工信息的处理函数
 exports.delete_staff = (req, res) => {
     sId = req.body.sId;
     db.getConnection((err, conn) => {
@@ -58,6 +62,8 @@ exports.delete_staff = (req, res) => {
         }
     })
 }
+
+//更新教职工信息的处理函数
 exports.update_staff = (req, res) => {
     const info = req.body
         // 定义 SQL 语句，更改教职工信息
