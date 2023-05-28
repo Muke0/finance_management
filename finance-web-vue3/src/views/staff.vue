@@ -39,12 +39,25 @@
         <el-form-item label="姓名" :label-width="formLabelWidth">
           <el-input v-model="addform.sName" autocomplete="off" />
         </el-form-item>
-        <el-form-item label="职称" :label-width="formLabelWidth">
+        <!-- <el-form-item label="职称" :label-width="formLabelWidth">
           <el-input v-model="addform.sPosition" autocomplete="off" />
         </el-form-item>
         <el-form-item label="类别" :label-width="formLabelWidth">
           <el-input v-model="addform.sType" autocomplete="off" />
-        </el-form-item>
+        </el-form-item> -->
+        <el-form-item label="职称" :label-width="formLabelWidth">
+                <!-- <el-input v-model="modifyform.sPosition" autocomplete="off" /> -->
+                     <el-select v-model="addform.sPosition" :placeholder="positionholder(0)" >
+                        <el-option v-for="item in positionOptions" :key="item.value" :lable="item.label" :value="item.value"></el-option>
+                    </el-select>
+              </el-form-item>
+              <el-form-item label="类别" :label-width="formLabelWidth">
+                <!-- <el-input v-model="modifyform.sType" autocomplete="off" /> -->
+                     <el-select v-model="addform.sType" :placeholder="typeholder(0)">
+                      <el-option v-if="addform.sPosition=='教师'" v-for="item in typeOptions1" :key="item.value" :lable="item.label" :value="item.value"></el-option>
+                      <el-option v-if="addform.sPosition=='职工'" v-for="item in typeOptions2" :key="item.value" :lable="item.label" :value="item.value"></el-option>
+                    </el-select>
+              </el-form-item>
       </el-form>
       <template #footer>
         <span class="dialog-footer">
@@ -63,13 +76,13 @@
               </el-form-item>
               <el-form-item label="职称" :label-width="formLabelWidth">
                 <!-- <el-input v-model="modifyform.sPosition" autocomplete="off" /> -->
-                     <el-select v-model="modifyform.sPosition" :placeholder="positionholder" >
+                     <el-select v-model="modifyform.sPosition" :placeholder="positionholder(1)" >
                         <el-option v-for="item in positionOptions" :key="item.value" :lable="item.label" :value="item.value"></el-option>
                     </el-select>
               </el-form-item>
               <el-form-item label="类别" :label-width="formLabelWidth">
                 <!-- <el-input v-model="modifyform.sType" autocomplete="off" /> -->
-                     <el-select v-model="modifyform.sType" :placeholder="typeholder">
+                     <el-select v-model="modifyform.sType" :placeholder="typeholder(1)">
                       <el-option v-if="modifyform.sPosition=='教师'" v-for="item in typeOptions1" :key="item.value" :lable="item.label" :value="item.value"></el-option>
                       <el-option v-if="modifyform.sPosition=='职工'" v-for="item in typeOptions2" :key="item.value" :lable="item.label" :value="item.value"></el-option>
                     </el-select>
@@ -376,11 +389,11 @@ export default {
       this.modifyform.sType = row.sType;
       this.modifyDialogFormVisible = true;
     },
-    positionholder(){
-      return this.modifyform.sPosition;
+    positionholder(type){
+      return type==1?this.modifyform.sPosition:this.addform.sPosition;
     },
-    typeholder(){
-      return this.modifyform.sType;
+    typeholder(type){
+      return type==1?this.modifyform.sType:this.addform.sType;
     }
   },
 };
