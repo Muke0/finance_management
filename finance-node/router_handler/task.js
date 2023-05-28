@@ -38,6 +38,7 @@ exports.check = (req, res) => {
                     return res.cc(err)
                 }
                 console.log('工资删除成功')
+                console.log(results)
             })
         }
         if (table.checked == 1) {
